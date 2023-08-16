@@ -5,4 +5,14 @@ footer {
   bottom: 0;
   width: 100%;
   padding: 10px;
+  a {
+    color: #fff;
+  }
+  .footer {
+    text-align: left;
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+  }
 }
