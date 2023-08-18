@@ -1,18 +1,39 @@
 footer {
-  position: absolute;
   text-align: center;
   text-transform: capitalize;
-  bottom: 0;
   width: 100%;
-  padding: 10px;
-  a {
-    color: #fff;
-  }
+
   .footer {
     text-align: left;
     ul {
       padding: 0;
       list-style: none;
+      a {
+        color: #000;
+        text-decoration: none;
+        display: inline-block;
+        padding: 4px 0;
+        animation-duration: 0.1s;
+        transition: all 0.2s linear;
+        .fa-caret-right {
+          display: none;
+        }
+        &:hover {
+          .fa-caret-right {
+            display: inline-block;
+          }
+          font-weight: 500;
+          transform: translateX(2px);
+        }
+      }
+    }
+  }
+  p {
+    padding: 0;
+    margin: 0 !important;
+    padding-bottom: 20px;
+    a {
+      color: #fff;
     }
   }
 }

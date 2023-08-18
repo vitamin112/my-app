@@ -22,15 +22,17 @@ function App() {
       <DataSearch.Provider value={handleSearch}>
         <Router>
           <Header />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route
-              path="/product"
-              element={<ProductPage searchTerm={searchTerm} />}
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <div className="main">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route
+                path="/product"
+                element={<ProductPage searchTerm={searchTerm} />}
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
           <Footer />
         </Router>
       </DataSearch.Provider>

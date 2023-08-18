@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import ProductCard from "../../../components/productCard";
 import NotFound from "../notFound/notFound";
-import Loader from "../../../components/load";
+import Loader from "../../../components/loader";
 import "../product";
 import "./home.scss";
+import ProductList from "../../../components/productList";
 
 function HomePage() {
 
@@ -16,7 +17,7 @@ function HomePage() {
 
     useEffect(() => {
         console.log("call api");
-        fetch('https://fakestoreapi.com/products')
+        fetch('https://fakestoreapi.com/products?limit=12')
             .then(res => res.json())
             .then(data => setData(data))
             .catch(error => {
@@ -117,7 +118,7 @@ function HomePage() {
                     </Carousel.Item>
                 </Carousel>
             </div>
-            <p className="pt-5 h2 container">Our products</p>
+            <p className="pt-5 pb-2 h2 container">Our products</p>
             <div className="tags">
                 <div className="filter my-2 container d-flex gap-2 flex-wrap">
                     {categories?.map((item, index) => {
@@ -129,8 +130,8 @@ function HomePage() {
                     })}
                 </div>
             </div>
-            <div className="d-flex flex-wrap justify-content-sm-start justify-content-center container">
-                {data ? (handlePrintProduct(data)?.every((element) => element === undefined) ? <NotFound /> : handlePrintProduct(data)) : <Loader />}
+            <div className="container d-flex flex-wrap justify-content-sm-start justify-content-center g-2">
+                {data ? (handlePrintProduct(data)?.every((element) => element === undefined) ? <NotFound /> : <ProductList searchTerm={""} data={data} category={category} handleShowProduct={handleShowProduct} />) : <Loader />}
             </div>
         </div>
     );

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
-import "./header.scss";
-import "react-bootstrap";
 import SearchBox from "../searchBox";
-import LoginForm from "../login";
-import RegisterForm from '../register';
+import LoginForm from "../loginForm";
+import RegisterForm from '../registerForm';
+import logo from './logo.png'
+import "react-bootstrap";
+import "./header.scss";
 
 const Header = () => {
 
@@ -20,7 +20,12 @@ const Header = () => {
             <header className="container d-flex justify-content-between align-items-center flex-wrap">
                 <div className="headerLogo">
                     <Link to={"/"}>
-                        <span>S</span>hop
+                        <div className="d-flex align-content-center">
+                            <div className="header-logo-img my-auto">
+                                <img src={logo} alt="" />
+                            </div>
+                            <span>L</span>ORSIS
+                        </div>
                     </Link>
                 </div>
                 <div className="header-menu d-flex align-content-center gap-3" id={showMenu ? "active" : " "}>
