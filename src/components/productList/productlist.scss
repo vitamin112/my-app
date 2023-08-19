@@ -1,5 +1,5 @@
 .container .box {
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
   border-radius: 16px;
   text-align: center;
   cursor: pointer;
@@ -50,4 +50,7 @@
 }
 select {
   max-width: 150px;
+}
+.no-result {
+  height: 60vh;
 }

@@ -1,8 +1,7 @@
 .header-search {
   position: relative;
-
-  #header-search-input {
-    height: 100%;
+  overflow-y: hidden;
+  .header-search-input {
     width: 100%;
     outline: none;
     padding: 4px 12px;
@@ -30,6 +29,31 @@
 
     &:hover {
       background-color: rgba(0, 0, 255, 0.579);
+    }
+  }
+}
+@media (max-width: 540px) {
+  .header-search {
+    background-color: red;
+    width: 40px;
+    a {
+      position: absolute;
+      display: inline-block;
+      right: 0px;
+      top: 0;
+      height: 100%;
+      padding: 4px 12px;
+      border-radius: 12px;
+      outline: none;
+      border: none;
+      transition: 0.2s linear;
+    }
+    .header-search-input {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      background-color: red;
     }
   }
 }

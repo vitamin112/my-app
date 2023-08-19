@@ -49,8 +49,8 @@ function ProductPage({ searchTerm }) {
         setSortValue(currentValue);
 
         let sortedData = data.sort((a, b) => {
-            const aValue = currentValue == "price" ? a[currentValue] : a.rating[currentValue];
-            const bValue = currentValue == "price" ? b[currentValue] : b.rating[currentValue];
+            const aValue = currentValue == "price" || currentValue == "id" ? a[currentValue] : a.rating[currentValue];
+            const bValue = currentValue == "price" || currentValue == "id" ? b[currentValue] : b.rating[currentValue];
 
             if (aValue < bValue) {
                 return 1;
@@ -68,8 +68,8 @@ function ProductPage({ searchTerm }) {
                 <Form.Select aria-label="select" value={sortValue} onChange={handleSort}>
                     <option value="id">Default</option>
                     <option value="price">Price</option>
-                    <option value="rate">Selling</option>
-                    <option value="count">Rating</option>
+                    <option value="count">Selling</option>
+                    <option value="rate">Rating</option>
                 </Form.Select>
                 {
                     categories?.map((item, index) => {

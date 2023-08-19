@@ -15,6 +15,7 @@ function App() {
 
   const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm);
+    return searchTerm;
   };
 
   return (

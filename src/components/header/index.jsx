@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 import SearchBox from "../searchBox";
@@ -15,6 +15,8 @@ const Header = () => {
 
     const [data, setData] = useState();
 
+    const path = useLocation();
+
     return (
         <div id="header">
             <header className="container d-flex justify-content-between align-items-center flex-wrap">
@@ -28,10 +30,9 @@ const Header = () => {
                         </div>
                     </Link>
                 </div>
+                <SearchBox path={path} />
                 <div className="header-menu d-flex align-content-center gap-3" id={showMenu ? "active" : " "}>
-                    <div className="header-menu-box">
-                        <SearchBox />
-                    </div>
+
                     <ul>
                         <li>
                             <NavLink
