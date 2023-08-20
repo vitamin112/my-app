@@ -2,6 +2,9 @@ import img from './no-result.png'
 import { useContext } from "react";
 import { DataSearch } from "../../App";
 import "./productlist.scss"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import NotFound from '../../container/pages/notFound/notFound';
 
 const ProductList = ({ data, searchTerm, handleShowProduct, category }) => {
 
@@ -20,9 +23,13 @@ const ProductList = ({ data, searchTerm, handleShowProduct, category }) => {
                             <img src={item?.image} alt="" />
                         </div>
                         <div className="title h6 py-2">{item?.title}</div>
-                        <div className="d-flex justify-content-between">
-                            <span className="text-danger">{item?.price} $</span>{" "}
-                            {item?.rating?.count} sold
+                        <div className="d-flex justify-content-between align-items-center">
+                            <span className="text-danger">{item?.price} $</span>
+                            <div className="product-rating">
+                                {item?.rating?.rate}
+                                <FontAwesomeIcon icon={faStar} className='px-1 text-warning' />
+                                {" | "}
+                                {item?.rating?.count} <strong>sold</strong></div>
                         </div>
                     </div>
                 </div>
@@ -46,7 +53,7 @@ const ProductList = ({ data, searchTerm, handleShowProduct, category }) => {
         return handlePrint(newProducts);
     }
     else {
-        return <h2>No result!</h2>;
+        return <NotFound />;
     }
 }
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faClose, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import SearchBox from "../searchBox";
 import LoginForm from "../loginForm";
 import RegisterForm from '../registerForm';
@@ -9,13 +9,21 @@ import logo from './logo.png'
 import "react-bootstrap";
 import "./header.scss";
 
-const Header = () => {
+const Header = ({ darkMode, setDarkMode }) => {
 
     const [showMenu, setShowMenu] = useState(false);
 
     const [data, setData] = useState();
 
     const path = useLocation();
+
+    const handleDarkMode = () => {
+        setDarkMode(!darkMode);
+        document.documentElement.style
+            .setProperty('--text-color', `${darkMode ? 'black' : 'white'}`);
+        document.documentElement.style
+            .setProperty('--background-color', `${darkMode ? 'white' : 'black'}`);
+    }
 
     return (
         <div id="header">
@@ -31,8 +39,7 @@ const Header = () => {
                     </Link>
                 </div>
                 <SearchBox path={path} />
-                <div className="header-menu d-flex align-content-center gap-3" id={showMenu ? "active" : " "}>
-
+                <div className="header-menu d-flex align-content-center gap-3 order-last" id={showMenu ? "active" : " "}>
                     <ul>
                         <li>
                             <NavLink
@@ -62,12 +69,14 @@ const Header = () => {
                             </NavLink>
                         </li>
                     </ul>
-
                     <div className="header-icon">
                         <LoginForm />
                         <RegisterForm />
                     </div>
                 </div>
+                <button className='darkMode' onClick={() => handleDarkMode()}>
+                    <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+                </button>
                 {showMenu &&
                     <button className='close-btn fs-1' onClick={() => setShowMenu(false)}>
                         <FontAwesomeIcon icon={faClose} />

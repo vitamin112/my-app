@@ -1,16 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import ProductCard from "../../../components/productCard";
 import NotFound from "../notFound/notFound";
 import Loader from "../../../components/loader";
+import ProductList from "../../../components/productList";
 import "../product";
 import "./home.scss";
-import ProductList from "../../../components/productList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBasketShopping, faRepeat, faTruckFast } from "@fortawesome/free-solid-svg-icons";
+
 
 function HomePage() {
 
-    const [categories, setCategories] = useState();
-    const [category, setCategory] = useState("all");
     const [data, setData] = useState();
     const [modalShow, setModalShow] = useState(false);
     const [Product, setProduct] = useState();
@@ -23,43 +24,12 @@ function HomePage() {
             .catch(error => {
                 setData([]);
             });
-
-        fetch('https://fakestoreapi.com/products/categories')
-            .then(res => res.json())
-            .then(categories => setCategories(categories))
-            .catch(error => {
-                console.log(error);
-            });
     }, [])
 
-    function handleFilter(item) {
-        if (item == category)
-            setCategory("all")
-        else
-            setCategory(item);
-    }
+
     function handleShowProduct(item) {
         setModalShow(true);
         setProduct(item);
-    }
-    function handlePrintProduct(data) {
-        return data?.map((item) => {
-            if (item?.category == category || category == "all")
-                return (
-                    <div className="col-10 col-sm-6 col-md-4 col-lg-3 p-2" key={item?.id}>
-                        <div className="box p-2" onClick={() => handleShowProduct(item)}>
-                            <div className="image">
-                                <img src={item?.image} alt="" />
-                            </div>
-                            <div className="title h6 py-2">{item?.title}</div>
-                            <div className="d-flex justify-content-between">
-                                <span className="text-danger">{item?.price} $</span>{" "}
-                                {item?.rating?.count} sold
-                            </div>
-                        </div>
-                    </div>
-                );
-        });
     }
 
     return (
@@ -118,20 +88,40 @@ function HomePage() {
                     </Carousel.Item>
                 </Carousel>
             </div>
-            <p className="pt-5 pb-2 h2 container">Our products</p>
-            <div className="tags">
-                <div className="filter my-2 container d-flex gap-2 flex-wrap">
-                    {categories?.map((item, index) => {
-                        return (<div key={index}
-                            className={item == category ? "active" : ""}
-                            onClick={() => handleFilter(item)}>
-                            {item}
-                        </div>);
-                    })}
+            <div className="block-service">
+                <div className="container d-none d-sm-flex gap-2 py-2 ">
+                    <div className="item col d-flex py-2">
+                        <div className="icon p-2">
+                            <FontAwesomeIcon icon={faBasketShopping} />
+                        </div>
+                        <div className="content">
+                            <h4 className="">Payment on delivery.</h4>
+                            <span className="text-secondary">Nationwide Delivery.</span>
+                        </div>
+                    </div>
+                    <div className="item col d-flex py-2">
+                        <div className="icon p-2">
+                            <FontAwesomeIcon icon={faTruckFast} />
+                        </div>
+                        <div className="content">
+                            <h4 className="">Free shipping </h4>
+                            <span className="text-secondary">For orders over $10.</span>
+                        </div>
+                    </div>
+                    <div className="item col d-flex py-2">
+                        <div className="icon p-2">
+                            <FontAwesomeIcon icon={faRepeat} />
+                        </div>
+                        <div className="content">
+                            <h4 className="">Free exchange</h4>
+                            <span className="text-secondary">Within 30 days from purchase date.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <p className="pt-4 pb-2 h2 container">New products</p>
             <div className="container d-flex flex-wrap justify-content-sm-start justify-content-center g-2">
-                {data ? (handlePrintProduct(data)?.every((element) => element === undefined) ? <NotFound /> : <ProductList searchTerm={""} data={data} category={category} handleShowProduct={handleShowProduct} />) : <Loader />}
+                {data ? <ProductList searchTerm={""} data={data} category={"all"} handleShowProduct={handleShowProduct} /> : <Loader />}
             </div>
         </div>
     );

@@ -1,3 +1,4 @@
+@import "../../index.css";
 footer {
   text-align: center;
   text-transform: capitalize;
@@ -9,7 +10,7 @@ footer {
       padding: 0;
       list-style: none;
       a {
-        color: #000;
+        color: var(--text-color);
         text-decoration: none;
         display: inline-block;
         padding: 4px 0;

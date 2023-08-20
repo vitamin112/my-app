@@ -7,11 +7,11 @@ import NotFound from "./container/pages/notFound/notFound";
 import ProductPage from "./container/pages/product";
 import Footer from "./components/footer";
 import "./App.css";
-
 export const DataSearch = createContext();
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm);
@@ -19,10 +19,10 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App" id={darkMode ? "darkMode" : ""}>
       <DataSearch.Provider value={handleSearch}>
         <Router>
-          <Header />
+          <Header darkMode={darkMode} setDarkMode={setDarkMode} />
           <div className="main">
             <Routes>
               <Route path="/" element={<HomePage />} />

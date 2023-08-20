@@ -1,13 +1,22 @@
+@import "../../index.css";
 #header {
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color);
+  color: var(--text-color);
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   width: 100%;
   z-index: 999;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--text-color);
   padding: 8px;
+  .darkMode {
+    width: 30px;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    background-color: transparent;
+  }
   header {
     img {
       display: block;
@@ -18,7 +27,7 @@
     }
     a {
       text-decoration: none;
-      color: #000;
+      color: var(--text-color);
     }
     .header-icon {
       button {
@@ -46,7 +55,7 @@
     }
 
     .headerLogo {
-      color: #000;
+      color: var(--background-color);
       font-size: 1.5rem;
       font-weight: 600;
 
@@ -72,7 +81,7 @@
           text-align: center;
           padding: 4px 8px;
           display: inline-block;
-          color: #000;
+          color: var(--text-color);
           border-bottom: 1px solid transparent;
           transition: all 0.1s linear;
           position: relative;
@@ -146,7 +155,9 @@
         height: 100%;
         background-color: #ccc;
         animation: moveSpaceship 0.2s linear;
-
+        a {
+          color: #000;
+        }
         & div {
           width: 100%;
         }
