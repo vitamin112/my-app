@@ -13,16 +13,16 @@ const SearchBox = (path) => {
     let searchTerm = useContext(DataSearch);
 
     let SearchButton = () => {
-        if (path.path.pathname == "/")
-            return (<Link to="/product" component={<ProductPage />} >
-                <FontAwesomeIcon icon={faSearch} />
-            </Link>)
-        else {
+        if (path.path.pathname == "/product")
             return (<button onClick={handleClickSearchBtn} className={ShowSearchBox ? "active" : ""} >
                 {
                     searchValue == "" ? <FontAwesomeIcon icon={faSearch} /> : <FontAwesomeIcon icon={faXmark} />
                 }
             </button >)
+        else {
+            return (<Link to="/product" component={<ProductPage />} >
+                <FontAwesomeIcon icon={faSearch} />
+            </Link>)
         }
     }
 

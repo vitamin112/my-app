@@ -25,7 +25,7 @@ const Header = ({ darkMode, setDarkMode }) => {
         setDarkMode(!darkMode);
         changeColor('--text-color', "black", 'white');
         changeColor('--background-color', 'white', "rgb(24,25,26)");
-        changeColor('--bg-box', 'white', "gray");
+        changeColor('--bg-box', 'white', "#777");
     }
 
     return (
