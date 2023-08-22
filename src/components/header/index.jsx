@@ -16,13 +16,16 @@ const Header = ({ darkMode, setDarkMode }) => {
     const [data, setData] = useState();
 
     const path = useLocation();
+    let changeColor = (path, value1, value2) => {
+        document.documentElement.style
+            .setProperty(path, `${darkMode ? value1 : value2}`);
+    }
 
     const handleDarkMode = () => {
         setDarkMode(!darkMode);
-        document.documentElement.style
-            .setProperty('--text-color', `${darkMode ? 'black' : 'white'}`);
-        document.documentElement.style
-            .setProperty('--background-color', `${darkMode ? 'white' : 'black'}`);
+        changeColor('--text-color', "black", 'white');
+        changeColor('--background-color', 'white', "black");
+        changeColor('--bg-box', 'white', "gray");
     }
 
     return (

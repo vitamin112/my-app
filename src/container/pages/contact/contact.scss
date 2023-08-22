@@ -1,0 +1,41 @@
+#contact {
+  ul li {
+    padding: 2px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: var(--bg-box);
+    border-radius: 3px;
+    &::placeholder {
+      color: var(--text-color);
+      opacity: 0.5;
+    }
+  }
+
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+}

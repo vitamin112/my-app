@@ -38,11 +38,13 @@ const ProductList = ({ data, searchTerm, handleShowProduct, category }) => {
     }
 
     const searchValue = searchTerm ?? searchTerm.trim().toLowerCase();
-
     if (searchValue !== "" && data.length > 0) {
 
         let newProducts = data.filter(item => item.title.toLowerCase().includes(searchValue))
-        return handlePrint(newProducts);
+        return <>
+            <h2 className='container'>Result for "{searchTerm}"</h2>
+            {handlePrint(newProducts)}
+        </>;
     }
     else if (data.length > 0) {
 

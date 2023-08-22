@@ -7,6 +7,7 @@ import NotFound from "./container/pages/notFound/notFound";
 import ProductPage from "./container/pages/product";
 import Footer from "./components/footer";
 import "./App.css";
+import Contact from "./container/pages/contact";
 export const DataSearch = createContext();
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                 path="/product"
                 element={<ProductPage searchTerm={searchTerm} />}
               />
+              <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

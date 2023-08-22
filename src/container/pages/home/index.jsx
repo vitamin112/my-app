@@ -123,6 +123,8 @@ function HomePage() {
             <div className="container d-flex flex-wrap justify-content-sm-start justify-content-center g-2">
                 {data ? <ProductList searchTerm={""} data={data} category={"all"} handleShowProduct={handleShowProduct} /> : <Loader />}
             </div>
+
+
         </div>
     );
 }

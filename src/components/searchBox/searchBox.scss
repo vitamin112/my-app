@@ -5,9 +5,15 @@
     width: 100%;
     outline: none;
     padding: 4px 12px;
-    border-radius: 12px;
+    border-radius: 16px;
     border: 1px solid #cccccc7b;
     transition: all 0.2s linear;
+    background-color: var(--bg-box);
+    color: var(--text-color);
+    &::placeholder {
+      color: var(--text-color);
+      opacity: 0.5;
+    }
     &:focus {
       border: 1px solid #ccc;
     }
@@ -15,21 +21,21 @@
 
   button,
   a {
-    color: var(--);
+    color: black;
     position: absolute;
     display: inline-block;
     right: 0px;
     top: 1px;
     height: calc(100% - 2px);
     padding: 4px 12px;
-    border-bottom-right-radius: 12px;
-    border-top-right-radius: 12px;
+    border-bottom-right-radius: 16px;
+    border-top-right-radius: 16px;
     outline: none;
     border: none;
     transition: 0.2s linear;
 
     &:hover {
-      background-color: rgba(0, 0, 255, 0.579);
+      background-color: #cccccc5b;
     }
   }
 }
@@ -39,7 +45,8 @@
     height: 32px !important;
     button,
     a {
-      color: #000;
+      color: var(--text-color);
+      background-color: transparent;
       position: absolute;
       display: inline-block;
       right: 0px;
