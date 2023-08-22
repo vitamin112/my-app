@@ -24,7 +24,7 @@ const Header = ({ darkMode, setDarkMode }) => {
     const handleDarkMode = () => {
         setDarkMode(!darkMode);
         changeColor('--text-color', "black", 'white');
-        changeColor('--background-color', 'white', "black");
+        changeColor('--background-color', 'white', "rgb(24,25,26)");
         changeColor('--bg-box', 'white', "gray");
     }
 
@@ -35,7 +35,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                     <Link to={"/"}>
                         <div className="d-flex align-content-center">
                             <div className="header-logo-img my-auto">
-                                <img src={logo} alt="" />
+                                <img src={logo} alt="logo" />
                             </div>
                             <span>L</span>ORSIS
                         </div>
