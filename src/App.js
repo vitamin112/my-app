@@ -27,6 +27,7 @@ function App() {
           <div className="main">
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/my-app" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route
                 path="/product"
