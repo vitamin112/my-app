@@ -16,6 +16,7 @@ const Header = ({ darkMode, setDarkMode }) => {
     const [data, setData] = useState();
 
     const path = useLocation();
+    console.log(path);
     let changeColor = (path, value1, value2) => {
         document.documentElement.style
             .setProperty(path, `${darkMode ? value1 : value2}`);
