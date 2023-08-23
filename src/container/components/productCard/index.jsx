@@ -34,7 +34,7 @@ function ProductCard({ item, ...props }) {
                                     Category:
                                     <span className="badge bg-primary">{item?.category}</span>
                                 </Card.Title>
-                                <Card.Text>
+                                <Card className='py-2 border border-0'>
                                     <div className="rating py-2">
                                         {<span className="h5 me-3">{item?.rating.rate} <FontAwesomeIcon icon={faStar} className='text-warning' beat />
                                         </span>}
@@ -50,7 +50,7 @@ function ProductCard({ item, ...props }) {
                                         <option value="4">4</option>
                                         <option value="5">5</option>
                                     </select></div>
-                                </Card.Text>
+                                </Card>
                                 <Button variant="primary" className='me-2' >Buy now</Button>
                                 <Button variant="warning ">Add to cart</Button>
                                 <div className='pt-2 h5'><FontAwesomeIcon className="text-info" icon={faHandsHolding} /> Lorsis Guarantee
