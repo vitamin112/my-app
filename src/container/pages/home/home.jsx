@@ -4,7 +4,7 @@ import ProductCard from "../../../components/productCard";
 import NotFound from "../notFound/notFound";
 import Loader from "../../../components/loader";
 import ProductList from "../../../components/productList";
-import "../product";
+import "../product/product";
 import "./home.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping, faRepeat, faTruckFast } from "@fortawesome/free-solid-svg-icons";

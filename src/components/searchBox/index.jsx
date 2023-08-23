@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { DataSearch } from "../../App";
 import { Link } from "react-router-dom";
-import ProductPage from "../../container/pages/product";
+import ProductPage from "../../container/pages/product/product";
 
 const SearchBox = (path) => {
     const [searchValue, setSearchValue] = useState("");
