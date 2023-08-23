@@ -155,7 +155,8 @@
         left: 0;
         right: 0;
         height: 100%;
-        background-color: #ccc;
+        color: var(--background-color);
+        background-color: var(--bg-box);
         animation: moveSpaceship 0.2s linear;
         a {
           color: #000;

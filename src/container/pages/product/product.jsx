@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { DataSearch } from "../../../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import ProductCard from "../../../components/productCard";
+import ProductCard from "../../components/productCard";
 import NotFound from "../notFound/notFound";
-import Loader from "../../../components/loader";
-import ProductList from "../../../components/productList";
+import Loader from "../../components/loader";
+import ProductList from "../../components/productList";
 import Form from 'react-bootstrap/Form';
 import "./product.scss";
 

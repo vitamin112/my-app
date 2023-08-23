@@ -2,9 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import './searchBox.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { DataSearch } from "../../App";
+import { DataSearch } from "../../../App";
 import { Link } from "react-router-dom";
-import ProductPage from "../../container/pages/product/product";
+import ProductPage from "../../../container/pages/product/product";
 
 const SearchBox = (path) => {
     const [searchValue, setSearchValue] = useState("");
@@ -40,7 +40,7 @@ const SearchBox = (path) => {
 
 
     return (
-        <form className="header-search ms-auto me-2">
+        <form className="header-search ms-auto me-2" id="searchBoxForm">
             <SearchButton />
             <input type="text"
                 className="header-search-input"

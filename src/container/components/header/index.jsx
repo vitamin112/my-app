@@ -16,18 +16,7 @@ const Header = ({ darkMode, setDarkMode }) => {
     const [data, setData] = useState();
 
     const path = useLocation();
-    console.log(path);
-    let changeColor = (path, value1, value2) => {
-        document.documentElement.style
-            .setProperty(path, `${darkMode ? value1 : value2}`);
-    }
 
-    const handleDarkMode = () => {
-        setDarkMode(!darkMode);
-        changeColor('--text-color', "black", 'white');
-        changeColor('--background-color', 'white', "rgb(24,25,26)");
-        changeColor('--bg-box', 'white', "#777");
-    }
 
     return (
         <div id="header">
@@ -78,7 +67,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                         <RegisterForm />
                     </div>
                 </div>
-                <button className='darkMode' onClick={() => handleDarkMode()}>
+                <button className='darkMode' onClick={() => setDarkMode(!darkMode)}>
                     <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
                 </button>
                 {showMenu &&

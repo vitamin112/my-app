@@ -1,10 +1,10 @@
 import img from './no-result.png'
 import { useContext } from "react";
-import { DataSearch } from "../../App";
-import "./productlist.scss"
+import { DataSearch } from "../../../App";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import NotFound from '../../container/pages/notFound/notFound';
+import NotFound from '../../pages/notFound/notFound';
+import "./productlist.scss"
 
 const ProductList = ({ data, searchTerm, handleShowProduct, category }) => {
 
@@ -23,7 +23,7 @@ const ProductList = ({ data, searchTerm, handleShowProduct, category }) => {
                             <img src={item?.image} alt="" />
                         </div>
                         <div className="title h6 py-2">{item?.title}</div>
-                        <div className="d-flex justify-content-between align-items-center">
+                        <div className="d-flex justify-content-around justify-content-sm-between align-items-center ">
                             <span className="text-danger">{item?.price} $</span>
                             <div className="product-rating">
                                 {item?.rating?.rate}
