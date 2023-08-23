@@ -22,23 +22,23 @@ function Contact() {
                 <div className="form-contact col-12 col-md-6 p-2 ">
                     <h3>CONTACT US</h3>
                     <form>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
+                        <div className="form-group">
+                            <label htmlFor="name">Name:</label>
                             <input type="text" id="name" placeholder='Your name' name="name" required />
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
+                        <div className="form-group">
+                            <label htmlFor="email">Email:</label>
                             <input type="email" id="email" placeholder='Your email' name="email" required />
                         </div>
-                        <div class="form-group">
-                            <label for="email">Address:</label>
+                        <div className="form-group">
+                            <label htmlFor="email">Address:</label>
                             <input type="text" id="address" placeholder='Your address' name="address" required />
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message:</label>
+                        <div className="form-group">
+                            <label htmlFor="message">Message:</label>
                             <textarea id="message" name="message" placeholder='Your message' rows="4" required></textarea>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <button type="submit">Submit</button>
                         </div>
                     </form>

@@ -32,7 +32,7 @@ function ProductCard({ item, ...props }) {
                             <Card.Body>
                                 <Card.Title className='h2'>
                                     Category:
-                                    <span class="badge bg-primary">{item?.category}</span>
+                                    <span className="badge bg-primary">{item?.category}</span>
                                 </Card.Title>
                                 <Card.Text>
                                     <div className="rating py-2">
@@ -42,19 +42,19 @@ function ProductCard({ item, ...props }) {
                                         {<span className="h5"> {item?.rating.count} Rating</span>}
                                     </div>
                                     {<span className="d-block h4 my-1 text-danger">Price: ${item?.price}</span>}
-                                    <p>Shipping: <FontAwesomeIcon icon={faTruck} />  Free shipping</p>
-                                    <p className=''><strong>Qty</strong>: <select id="qty">
+                                    <div>Shipping: <FontAwesomeIcon icon={faTruck} />  Free shipping</div>
+                                    <div className=''><strong>Qty</strong>: <select id="qty">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                         <option value="5">5</option>
-                                    </select></p>
+                                    </select></div>
                                 </Card.Text>
                                 <Button variant="primary" className='me-2' >Buy now</Button>
                                 <Button variant="warning ">Add to cart</Button>
-                                <p className='pt-2 h5'><FontAwesomeIcon className="text-info" icon={faHandsHolding} /> Lorsis Guarantee
-                                </p>
+                                <div className='pt-2 h5'><FontAwesomeIcon className="text-info" icon={faHandsHolding} /> Lorsis Guarantee
+                                </div>
                                 <span > Get the items you ordered or get your money back.</span>
 
                             </Card.Body>
