@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import ProductCard from "../../../components/productCard";
+import ProductCard from "../../components/productCard";
 import NotFound from "../notFound/notFound";
-import Loader from "../../../components/loader";
-import ProductList from "../../../components/productList";
+import Loader from "../../../container/components/loader";
+import ProductList from "../../../container/components/productList";
 import "../product/product";
 import "./home.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -123,7 +123,10 @@ function HomePage() {
             <div className="container d-flex flex-wrap justify-content-sm-start justify-content-center g-2">
                 {data ? <ProductList searchTerm={""} data={data} category={"all"} handleShowProduct={handleShowProduct} /> : <Loader />}
             </div>
+            <div className="categories-tags container">
+                <div className="h2 title pt-5"> CATEGORIES</div>
 
+            </div>
 
         </div>
     );
