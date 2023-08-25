@@ -26,13 +26,17 @@ function ProductPage({ searchTerm }) {
                 setData([]);
             });
 
+
+    }, [])
+
+    useEffect(() => {
         fetch('https://fakestoreapi.com/products/categories')
             .then(res => res.json())
             .then(categories => setCategories(categories))
             .catch(error => {
                 console.log(error);
             });
-    }, [])
+    }, []);
 
     function handleFilter(item) {
         if (item == category)

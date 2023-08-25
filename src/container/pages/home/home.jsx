@@ -4,17 +4,29 @@ import ProductCard from "../../components/productCard";
 import NotFound from "../notFound/notFound";
 import Loader from "../../../container/components/loader";
 import ProductList from "../../../container/components/productList";
-import "../product/product";
-import "./home.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping, faRepeat, faTruckFast } from "@fortawesome/free-solid-svg-icons";
+import "../product/product";
+import "./home.scss";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css/pagination';
+import 'swiper/css';
 
+const categoriesImg = [
+    'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
+    'https://images.unsplash.com/photo-1508243771214-6e95d137426b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
+    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=420&q=80',
+
+]
 
 function HomePage() {
 
     const [data, setData] = useState();
     const [modalShow, setModalShow] = useState(false);
     const [Product, setProduct] = useState();
+    const [categories, setCategories] = useState();
 
     useEffect(() => {
         console.log("call api");
@@ -26,6 +38,14 @@ function HomePage() {
             });
     }, [])
 
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products/categories')
+            .then(res => res.json())
+            .then(categories => setCategories(categories))
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
 
     function handleShowProduct(item) {
         setModalShow(true);
@@ -34,61 +54,68 @@ function HomePage() {
 
     return (
         <div >
-            <div className="container">
+            <section className="container">
                 <ProductCard
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                     item={Product}
                 />
-            </div>
-            <div className="banner">
-                <Carousel data-bs-theme="dark">
-                    <Carousel.Item>
-                        <img
-                            src={
-                                "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                            }
-                            className="w-100 d-block carousel-img"
-                            alt=""
-                        />
-                        <Carousel.Caption>
-                            <h3 className="h2 text-white banner-text">Attractive price</h3>
-                            <p className='h3'>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
+            </section>
+            <section className="banner ">
+                <Swiper
+                    pagination={true} modules={[Pagination]} className="mySwiper"
+                >
 
-                    <Carousel.Item>
-                        <img
-                            src={
-                                "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                            }
-                            className="w-100 d-block carousel-img"
-                            alt=""
-                        />
-                        <Carousel.Caption>
-                            <h3 className="h2 text-white banner-text">New collection</h3>
-                            <p className='h3'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
+                    <SwiperSlide >
+                        <a href="/product" >
+                            <img
+                                src={
+                                    "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                }
+                                className="w-100 d-block carousel-img"
+                                alt=""
+                            />
+                        </a>
+                        <div className="banner-content">
+                            <h3>young fashion</h3>
+                            <p>We have everything you need</p>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <a href="/product" >
+                            <img
+                                src={
+                                    "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                }
+                                className="w-100 d-block carousel-img"
+                                alt=""
+                            />
+                        </a>
+                        <div className="banner-content">
+                            <h3>young fashion</h3>
+                            <p>We have everything you need</p>
+                        </div>
+                    </SwiperSlide>
 
-                    <Carousel.Item>
-                        <img
-                            src={
-                                "https://plus.unsplash.com/premium_photo-1674625943116-5f7eeed92917?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80 "
-                            }
-                            className="w-100 d-block carousel-img"
-                            alt=""
-                        />
-                        <Carousel.Caption>
-                            <h3 className="h2 text-white banner-text">young and dynamic</h3>
-                            <p className='h3'>
-                                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                            </p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
-            </div>
-            <div className="block-service">
+                    <SwiperSlide>
+                        <a href="">
+                            <img
+                                src={
+                                    "https://plus.unsplash.com/premium_photo-1674625943116-5f7eeed92917?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80 "}
+                                className="w-100 d-block carousel-img"
+                                alt=""
+                            />
+                        </a>
+                        <div className="banner-content">
+                            <h3>young fashion</h3>
+                            <p>We have everything you need</p>
+                        </div>
+                    </SwiperSlide>
+
+                </Swiper >
+
+            </section >
+            <section className="block-service">
                 <div className="container d-none d-sm-flex gap-2 py-2 ">
                     <div className="item col d-flex py-2">
                         <div className="icon p-2">
@@ -118,17 +145,50 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+            <section className="categories-tags">
+                <div className="h2 title pt-5 container"> CATEGORIES</div>
+                <Swiper
+                    slidesPerView={1}
+                    spaceBetween={30}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        968: {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        },
+                    }}
+                    modules={[Pagination]}
+                    className="mySwiper container py-4"
+                    effect="fade"
+                >
+                    {
+                        categories?.map((item, index) => {
+                            return (
+                                <SwiperSlide key={index} className="categories-item">
+                                    <a href="/product" >
+                                        <img src={categoriesImg[index]} alt="img" />
+                                    </a>
+                                    <h3 className="p-1">{item}</h3>
+                                </SwiperSlide>
+                            );
+                        })
+                    }
+                </Swiper>
+            </section>
             <p className="pt-4 pb-2 h2 container">New products</p>
-            <div className="container d-flex flex-wrap justify-content-sm-start justify-content-center g-2">
+            <section className="container d-flex flex-wrap justify-content-sm-start justify-content-center g-2">
                 {data ? <ProductList searchTerm={""} data={data} category={"all"} handleShowProduct={handleShowProduct} /> : <Loader />}
-            </div>
-            <div className="categories-tags container">
-                <div className="h2 title pt-5"> CATEGORIES</div>
+            </section>
 
-            </div>
 
-        </div>
+        </div >
     );
 }
 

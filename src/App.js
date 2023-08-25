@@ -16,7 +16,6 @@ function App() {
     const storedMode = localStorage.getItem("darkMode");
     return storedMode ? JSON.parse(storedMode) : false;
   });
-  console.log(darkMode);
 
   let changeColor = (path, value1, value2) => {
     document.documentElement.style.setProperty(

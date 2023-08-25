@@ -1,24 +1,80 @@
 .banner {
-  .carousel-img {
+  a {
+    width: 100%;
+  }
+  img {
     height: 70vh;
     max-height: 500px;
     object-fit: cover;
   }
-  .banner-text {
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
-      "AppleGothic", sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 2.5rem;
+  .banner-content {
+    position: absolute;
+    bottom: 20px;
+    font-size: 2rem;
     color: #131313;
-    letter-spacing: 0.15em;
-    text-shadow: 1px -1px 0 #767676, -1px 2px 1px #737272, -2px 4px 1px #767474,
-      -3px 6px 1px #787777, -4px 8px 1px #7b7a7a, -5px 10px 1px #7f7d7d;
+    text-align: center;
+    p {
+      text-shadow: -2px 2px 2px #fff;
+    }
+    h3 {
+      font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
+        "AppleGothic", sans-serif;
+      text-transform: uppercase;
+      font-size: 3rem;
+      color: #fff;
+      letter-spacing: 0.15em;
+      text-shadow: 1px -1px 0 #767676, -1px 2px 1px #737272,
+        -2px 4px 1px #767474, -3px 6px 1px #787777, -4px 8px 1px #7b7a7a,
+        -5px 10px 1px #7f7d7d;
+    }
+    .swiper-pagination {
+      span {
+        width: 100px !important;
+      }
+    }
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 .block-service {
   svg {
     color: red;
     font-size: 2rem;
+  }
+}
+.categories-tags {
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+  }
+  .swiper-slide img {
+    display: block;
+    object-fit: cover;
+  }
+  .swiper-pagination {
+    bottom: 0px !important;
+  }
+  .categories-item {
+    position: relative;
+    img {
+      border-radius: 4px;
+    }
+    h3 {
+      position: absolute;
+      bottom: 0;
+      text-transform: capitalize;
+      text-shadow: 1px 1px 1px var(--background-color);
+    }
   }
 }
