@@ -216,9 +216,9 @@ function HomePage() {
                             categories?.map((item, index) => {
                                 return (
                                     <SwiperSlide key={index} className="categories-item pb-4" >
-                                        <span class="translate-middle badge rounded-pill bg-danger p-2">
+                                        <span className="translate-middle badge rounded-pill bg-danger p-2">
                                             -10%
-                                            <span class="visually-hidden">unread messages</span>
+                                            <span className="visually-hidden">unread messages</span>
                                         </span>
                                         <a href={`/product?category=${item}`} title={item}>
                                             <img src={OnSaleImg[index]} alt="img" />
