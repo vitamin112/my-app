@@ -46,6 +46,7 @@
     font-size: 2rem;
   }
 }
+.on-sale,
 .categories-tags {
   img {
     width: 100%;
@@ -76,5 +77,11 @@
       text-transform: capitalize;
       text-shadow: 1px 1px 1px var(--background-color);
     }
+  }
+
+  .badge {
+    position: absolute;
+    top: 10% !important;
+    left: 12%;
   }
 }

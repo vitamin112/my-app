@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faClose, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import SearchBox from "../searchBox";
@@ -43,15 +43,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                                 Home
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink
-                                className={(navData) => (navData.isActive ? 'active' : 'link')}
-                                onClick={() => setShowMenu(false)}
-                                to="/Contact"
-                            >
-                                Contact
-                            </NavLink>
-                        </li>
+
                         <li>
                             <NavLink
                                 className={(navData) => (navData.isActive ? 'active' : 'link')}
@@ -59,6 +51,15 @@ const Header = ({ darkMode, setDarkMode }) => {
                                 to="/product"
                             >
                                 product
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                className={(navData) => (navData.isActive ? 'active' : 'link')}
+                                onClick={() => setShowMenu(false)}
+                                to="/Contact"
+                            >
+                                Contact
                             </NavLink>
                         </li>
                     </ul>

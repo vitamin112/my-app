@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
 import 'swiper/css';
+import { Link } from "react-router-dom";
 
 const categoriesImg = [
     'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
@@ -19,6 +20,12 @@ const categoriesImg = [
     'https://images.unsplash.com/photo-1508243771214-6e95d137426b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
     'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=420&q=80',
 
+]
+const OnSaleImg = [
+    'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
+    'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1395&q=80',
+    'https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1530&q=80'
 ]
 
 function HomePage() {
@@ -147,7 +154,7 @@ function HomePage() {
                 </div>
             </section>
             <section className="categories-tags">
-                <div className="h2 title pt-5 container"> CATEGORIES</div>
+                <div className="h3 title pt-5 container">New Categories</div>
                 <Swiper
                     slidesPerView={1}
                     spaceBetween={30}
@@ -172,7 +179,7 @@ function HomePage() {
                         categories?.map((item, index) => {
                             return (
                                 <SwiperSlide key={index} className="categories-item">
-                                    <a href="/product" >
+                                    <a href={`/product?category=${item}`} title={item}>
                                         <img src={categoriesImg[index]} alt="img" />
                                     </a>
                                     <h3 className="p-1">{item}</h3>
@@ -182,9 +189,51 @@ function HomePage() {
                     }
                 </Swiper>
             </section>
+            <p className="pt-4 pb-2 h2 container">On Sale</p>
+            <section className="container d-flex flex-wrap justify-content-sm-start justify-content-center g-2">
+                <section className="on-sale">
+                    <Swiper
+                        slidesPerView={2}
+                        spaceBetween={30}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 2,
+                                spaceBetween: 20,
+                            },
+                            968: {
+                                slidesPerView: 3,
+                                spaceBetween: 40,
+                            },
+                        }}
+                        modules={[Pagination]}
+                        className="mySwiper container py-1"
+                        effect="fade"
+                    >
+                        {
+                            categories?.map((item, index) => {
+                                return (
+                                    <SwiperSlide key={index} className="categories-item pb-4" >
+                                        <span class="translate-middle badge rounded-pill bg-danger p-2">
+                                            -10%
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                        <a href={`/product?category=${item}`} title={item}>
+                                            <img src={OnSaleImg[index]} alt="img" />
+                                        </a>
+                                    </SwiperSlide>
+                                );
+                            })
+                        }
+                    </Swiper>
+                </section>
+            </section>
             <p className="pt-4 pb-2 h2 container">New products</p>
             <section className="container d-flex flex-wrap justify-content-sm-start justify-content-center g-2">
                 {data ? <ProductList searchTerm={""} data={data} category={"all"} handleShowProduct={handleShowProduct} /> : <Loader />}
+                <a href={"/product"} className="mx-auto btn btn-warning mt-3">All product</a>
             </section>
 
 

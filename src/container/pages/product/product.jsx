@@ -7,6 +7,7 @@ import NotFound from "../notFound/notFound";
 import Loader from "../../components/loader";
 import ProductList from "../../components/productList";
 import Form from 'react-bootstrap/Form';
+import { useSearchParams } from "react-router-dom";
 import "./product.scss";
 
 function ProductPage({ searchTerm }) {
@@ -23,11 +24,17 @@ function ProductPage({ searchTerm }) {
             .then(res => res.json())
             .then(data => setData(data))
             .catch(error => {
-                setData([]);
             });
-
-
     }, [])
+
+    const [searchParams] = useSearchParams();
+
+    useEffect(() => {
+        if (searchParams.get('category')) {
+            setCategory(searchParams.get('category'));
+        }
+    }, [searchParams]);
+
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/categories')
